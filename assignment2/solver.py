@@ -9,7 +9,7 @@ def solve(a1, a2, a3):
   if a1 != 0.0:
     delta = a2**2 - 4*a1*a3
     if delta < 0:
-      return None
+      return "No Solution"
     elif delta == 0:
       return (-a2+math.sqrt(delta))/(2*a1)
     else:
@@ -21,9 +21,9 @@ def solve(a1, a2, a3):
       return -a3/a2
     else:
       if a3 != 0.0:
-        return None
+        return "No Solution"
       else:
-        return 0.0
+        return "Infinite"
 
 def assert_params_float(a1, a2, a3):
   # Check type of input value
