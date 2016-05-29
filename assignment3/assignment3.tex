@@ -1,0 +1,42 @@
+\documentclass[a4paper]{article}
+
+\usepackage{xeCJK}
+\setCJKmainfont{SimSun}
+\usepackage{fullpage}
+\usepackage{url}
+\usepackage{setspace}
+\onehalfspacing
+
+\begin{document}
+\title{软件质量保证\ 第3次作业}
+\author{赵睿哲 1200012778}
+\maketitle
+
+测试用例化简的目标是找到满足测试需求集$R$的测试用例集$T$的最小代表子集$T^{'}$。该过程可以用整数线性规划（Integer Linear Programming，简称ILP）中的特例：0-1整数线性规划来形式化描述。0-1整数线性规划可以证明为NP完全的
+\footnote{实际上，0-1整数线性规划问题是Karp的21个NP完全问题\url{(https://en.wikipedia.org/wiki/Karp's_21_NP-complete_problems)}之一}。
+
+本文首先介绍使用0-1整数线性规划描述的测试用例化简过程，进而给出该方法的时间复杂度（时间开销）。
+
+\section{线性规划模型}
+
+给定一个测试用例集$T$，其中包含$n$个测试用例$\{ t_1, t_2, \dots, t_n \}$。给定向量$\mathbf{x} = \{ x_1, x_2, \dots, x_n \}$，其中$x_i = 0/1$代表测试用例$i$是否保留在化简过的测试用例集中。由于本题要求测试需求为语句覆盖，因此假设程序$P$中存在$m$条\textbf{可达}语句，则测试需求集$R = \{r_1,r_2,\dots,r_m\}$中，任意需求$r_j$的含义为：第$j$条语句需要被覆盖。
+
+测试用例化简的目标是令保留的所有测试用例个数之和最小，因此目标函数为最小化：
+\begin{equation}\label{eq:objec}
+Z = \sum_{i=1}^{n} x_i
+\end{equation}
+令矩阵$\mathbf{A}$表示测试用例对语句的覆盖情况，其中$a_{ij} = 0/1$代表对于测试用例$i$是否能覆盖语句$j$。应满足的约束条件为所有可达语句都被覆盖，因此：
+\begin{equation}\label{eq:req}
+\mathbf{A}\mathbf{x} \geq \mathbf{1}
+\end{equation}
+约束条件\ref{eq:req}的含义为任意一条可达语句都要被覆盖至少一次。
+
+\section{时间开销分析}
+
+使用最简单的求解算法，即遍历所有的$\mathbf{x}$的情况，分别判断是否满足所有的约束条件，最终找到最小的测试用例集$T^{'}$。则时间复杂度应该为：
+\begin{equation}
+T(m, n) = O(2^nmn)
+\end{equation}
+其中$2^n$为所有的$\mathbf{x}$的组合情况，$mn$为计算约束条件\ref{eq:req}的时间复杂度。
+
+\end{document}
