@@ -45,7 +45,7 @@ BUILD_DIRS := \
 
 # unit test names
 TEST_NAMES := \
-	foo_test
+	foo_test bar_test
 TEST_BIN := $(foreach test,$(TEST_NAMES),$(TEST_BIN_DIR)/$(test).bin)
 
 # OBJECTS for our foobar project

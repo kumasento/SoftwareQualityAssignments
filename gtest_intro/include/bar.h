@@ -10,13 +10,16 @@ class EquationSolver {
 public:
   /**
    * solve: Given all parameters, will create a equation and solve it
-   * @ param a: a in the equation (1), could be 0
-   * @ param b: b in the equation (1), could be 0
-   * @ param c: c in the equation (1), could be 0
-   * @ param x: Pointer to equation solutions.
+   * @ param a: a in the equation (1), default to be 0
+   * @ param b: b in the equation (1), default to be 0
+   * @ param c: c in the equation (1), default to be 0
+   * @ param sol: Pointer to equation solutions.
    * @ return: Number of solutions, can only be 0, 1, 2.
    */
-  static int solve(T a, T b, T c, T *x);
+  int solve(T a = 0, T b = 0, T c = 0, T **sol = NULL) {
+
+    return 0;
+  }
 };
 
 #endif

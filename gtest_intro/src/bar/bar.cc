@@ -6,7 +6,4 @@
 
 #include "bar.h"
 
-template <typename T>
-int EquationSolver<T>::solve(T a, T b, T c, T *x) {
-  return 0;
-}
+// Nothing to be done here
