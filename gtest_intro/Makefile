@@ -49,7 +49,7 @@ TEST_NAMES := \
 TEST_BIN := $(foreach test,$(TEST_NAMES),$(TEST_BIN_DIR)/$(test).bin)
 
 # OBJECTS for our foobar project
-OBJ := $(FOO_NAME)/foo.o
+OBJ := $(FOO_NAME)/foo.o $(BAR_NAME)/bar.o
 # OBJECTS for test programs
 OBJS := $(addprefix $(OBJ_DIR)/, $(OBJ))
 
